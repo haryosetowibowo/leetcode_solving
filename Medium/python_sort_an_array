@@ -1,0 +1,9 @@
+from queue import PriorityQueue as pq
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        x = pq()
+        for i in nums:
+            x.put(i)
+        for i in range(len(nums)):
+            nums[i] = x.get()
+        return nums
