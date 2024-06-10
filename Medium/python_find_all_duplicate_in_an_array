@@ -1,6 +1,10 @@
-import numpy as np
 class Solution:
     def findDuplicates(self, nums: List[int]) -> List[int]:
-        unique, counts = np.unique(nums, return_counts=True)
-        ans = unique[np.where(counts > 1)]
-        return ans
+        seen = set()
+        dupe = set()
+        for i in nums:
+            if i in seen:
+                dupe.add(i)
+            else:
+                seen.add(i)
+        return list(dupe)
