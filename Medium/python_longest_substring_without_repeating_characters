@@ -1,0 +1,19 @@
+from collections import deque
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        max_unique = []
+        curr_queue = deque()
+        seen = set()
+        for i in s:
+            if i in seen:
+                while curr_queue and i in seen:
+                    removed_char = curr_queue.popleft()
+                    seen.remove(removed_char)
+                curr_queue.append(i)
+                seen.add(i)
+            else:
+                curr_queue.append(i)
+                seen.add(i)
+            if len(curr_queue) > len(max_unique):
+                max_unique = list(curr_queue)
+        return len(max_unique)
