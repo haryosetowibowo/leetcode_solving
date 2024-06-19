@@ -1,0 +1,8 @@
+import sys
+sys.set_int_max_str_digits(0)
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        x = int(''.join(map(str, num)))
+        y = x + k
+        z = list(map(int, str(y)))
+        return z
