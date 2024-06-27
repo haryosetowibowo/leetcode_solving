@@ -1,0 +1,15 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        n = len(height)
+        #Calculated the left monotonic stack
+        left = [height[0]]
+        for i in range(1,n):
+            left.append(max(left[i-1],height[i]))
+        #Calculated the right monotonic stack
+        right = [0 for i in range(n-1)]+[height[n-1]]
+        for i in range(n-2, -1, -1):
+            right[i] = max(right[i+1],height[i])
+        vol_water = 0
+        for i in range(n):
+            vol_water+=min(left[i],right[i])-height[i]
+        return vol_water
