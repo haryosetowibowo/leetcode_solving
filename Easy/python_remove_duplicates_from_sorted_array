@@ -1,0 +1,10 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        seen = set()
+        x = 0
+        for i in nums:
+            if i not in seen:
+                seen.add(i)
+                nums[x] = i
+                x += 1
+        return x
