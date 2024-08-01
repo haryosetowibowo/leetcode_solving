@@ -1,0 +1,15 @@
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        cnt = {}
+        x = []
+        ans = []
+        for i in words:
+            if i in cnt:
+                cnt[i] += 1
+            else:
+                cnt[i] = 1  
+        for i,j in cnt.items():
+            heapq.heappush(x, (-j,i))
+        for i in range(k):
+            ans.append(heapq.heappop(x)[1])
+        return ans
